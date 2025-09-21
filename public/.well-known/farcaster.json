@@ -1,0 +1,30 @@
+{
+  "accountAssociation": {
+    "header": "",
+    "payload": "",
+    "signature": ""
+  },
+  "frame": {
+    "version": "1",
+    "name": "CycleZen",
+    "subtitle": "Built with Zara",
+    "description": "CycleZen is a Base Mini App built with Zara.",
+    "iconUrl": "https://0co.to/images/zara-2.png",
+    "homeUrl": "https://c52aa34e86844abd8810b951dccd59b5-5lp3.vercel.app",
+    "splashImageUrl": "https://c52aa34e86844abd8810b951dccd59b5-5lp3.vercel.app/splash.png",
+    "splashBackgroundColor": "#000000",
+    "heroImageUrl": "https://c52aa34e86844abd8810b951dccd59b5-5lp3.vercel.app/image.png",
+    "tagline": "CycleZen",
+    "screenshotUrls": [
+      "https://c52aa34e86844abd8810b951dccd59b5-5lp3.vercel.app/screenshot.png",
+      "https://c52aa34e86844abd8810b951dccd59b5-5lp3.vercel.app/screenshot.png"
+    ],
+    "primaryCategory": "social",
+    "tags": [
+      "base",
+      "miniapp",
+      "onchainkit"
+    ],
+    "webhookUrl": "https://c52aa34e86844abd8810b951dccd59b5-5lp3.vercel.app/api/webhook"
+  }
+}
