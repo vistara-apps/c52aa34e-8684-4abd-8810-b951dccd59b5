@@ -46,7 +46,7 @@ export default function SettingsPage() {
       <AppShell currentPage="settings">
         <div className="flex items-center justify-center py-12">
           <div className="text-center">
-            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto mb-4"></div>
             <p className="text-gray-600">Loading settings...</p>
           </div>
         </div>
@@ -67,13 +67,13 @@ export default function SettingsPage() {
         {/* Profile Section */}
         <div className="card">
           <div className="flex items-center gap-3 mb-4">
-            <User className="text-primary" size={20} />
+            <User className="text-blue-600" size={20} />
             <h2 className="font-semibold">Profile</h2>
           </div>
-          
+
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1">
+              <label className="block text-sm font-medium text-gray-900 mb-1">
                 User ID
               </label>
               <input
@@ -86,7 +86,7 @@ export default function SettingsPage() {
             
             {user.farcasterId && (
               <div>
-                <label className="block text-sm font-medium text-foreground mb-1">
+                <label className="block text-sm font-medium text-gray-900 mb-1">
                   Farcaster ID
                 </label>
                 <input
@@ -106,7 +106,7 @@ export default function SettingsPage() {
           
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1">
+              <label className="block text-sm font-medium text-gray-900 mb-1">
                 Average Cycle Length (days)
               </label>
               <input
@@ -120,7 +120,7 @@ export default function SettingsPage() {
             </div>
             
             <div>
-              <label className="block text-sm font-medium text-foreground mb-1">
+              <label className="block text-sm font-medium text-gray-900 mb-1">
                 Average Period Length (days)
               </label>
               <input
@@ -138,7 +138,7 @@ export default function SettingsPage() {
         {/* Notifications */}
         <div className="card">
           <div className="flex items-center gap-3 mb-4">
-            <Bell className="text-primary" size={20} />
+            <Bell className="text-blue-600" size={20} />
             <h2 className="font-semibold">Notifications</h2>
           </div>
           
@@ -162,7 +162,7 @@ export default function SettingsPage() {
         {/* Data Management */}
         <div className="card">
           <div className="flex items-center gap-3 mb-4">
-            <Shield className="text-primary" size={20} />
+            <Shield className="text-blue-600" size={20} />
             <h2 className="font-semibold">Data Management</h2>
           </div>
           
@@ -201,7 +201,7 @@ export default function SettingsPage() {
         {/* Clear Data Confirmation Modal */}
         {showClearConfirm && (
           <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-            <div className="bg-surface rounded-lg p-6 max-w-md w-full">
+            <div className="bg-white rounded-lg p-6 max-w-md w-full">
               <h3 className="font-bold text-lg mb-4 text-red-600">Clear All Data?</h3>
               <p className="text-sm text-gray-600 mb-6">
                 This action cannot be undone. All your cycle logs, symptom data, and settings will be permanently deleted.
