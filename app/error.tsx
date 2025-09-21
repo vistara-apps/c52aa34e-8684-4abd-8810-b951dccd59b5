@@ -15,10 +15,10 @@ export default function Error({
   }, [error]);
 
   return (
-    <div className="min-h-screen bg-background flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
       <div className="text-center max-w-md">
         <AlertCircle className="text-red-500 mx-auto mb-4" size={48} />
-        <h2 className="text-2xl font-bold text-foreground mb-2">
+        <h2 className="text-2xl font-bold text-gray-900 mb-2">
           Something went wrong
         </h2>
         <p className="text-gray-600 mb-6">

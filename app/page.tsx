@@ -50,7 +50,7 @@ export default function HomePage() {
       <div className="space-y-6">
         {/* Welcome Section */}
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-foreground mb-2">
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">
             Welcome to CycleZen
           </h1>
           <p className="text-gray-600">
@@ -64,7 +64,7 @@ export default function HomePage() {
             onClick={() => setShowCycleForm(true)}
             className="card hover:shadow-lg transition-shadow duration-200 text-center p-6"
           >
-            <Calendar className="text-primary mx-auto mb-2" size={24} />
+            <Calendar className="text-blue-600 mx-auto mb-2" size={24} />
             <h3 className="font-medium">Log Period</h3>
             <p className="text-sm text-gray-600 mt-1">Track your cycle</p>
           </button>
@@ -73,7 +73,7 @@ export default function HomePage() {
             onClick={() => setShowSymptomForm(true)}
             className="card hover:shadow-lg transition-shadow duration-200 text-center p-6"
           >
-            <Activity className="text-accent mx-auto mb-2" size={24} />
+            <Activity className="text-green-600 mx-auto mb-2" size={24} />
             <h3 className="font-medium">Log Symptoms</h3>
             <p className="text-sm text-gray-600 mt-1">Track how you feel</p>
           </button>
