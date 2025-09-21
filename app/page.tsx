@@ -1,15 +1,29 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Plus, Calendar, Activity } from 'lucide-react';
 import { AppShell } from '@/components/AppShell';
 import { CycleOverview } from '@/components/CycleOverview';
 import { CycleLogForm } from '@/components/CycleLogForm';
 import { SymptomLogForm } from '@/components/SymptomLogForm';
+import { OnboardingFlow } from '@/components/OnboardingFlow';
+import { getUser, saveUser } from '@/lib/storage';
 
 export default function HomePage() {
   const [showCycleForm, setShowCycleForm] = useState(false);
   const [showSymptomForm, setShowSymptomForm] = useState(false);
+  const [showOnboarding, setShowOnboarding] = useState(false);
+
+  useEffect(() => {
+    const user = getUser();
+    if (!user) {
+      setShowOnboarding(true);
+    }
+  }, []);
+
+  const handleOnboardingComplete = () => {
+    setShowOnboarding(false);
+  };
 
   const handleCycleSaved = () => {
     setShowCycleForm(false);
@@ -23,9 +37,13 @@ export default function HomePage() {
     window.location.reload();
   };
 
+  if (showOnboarding) {
+    return <OnboardingFlow onComplete={handleOnboardingComplete} />;
+  }
+
   if (showCycleForm) {
     return (
-      <AppShell currentPage="home">
+      <AppShell>
         <CycleLogForm
           onSave={handleCycleSaved}
           onCancel={() => setShowCycleForm(false)}
@@ -36,7 +54,7 @@ export default function HomePage() {
 
   if (showSymptomForm) {
     return (
-      <AppShell currentPage="home">
+      <AppShell>
         <SymptomLogForm
           onSave={handleSymptomSaved}
           onCancel={() => setShowSymptomForm(false)}
@@ -46,7 +64,7 @@ export default function HomePage() {
   }
 
   return (
-    <AppShell currentPage="home">
+    <AppShell>
       <div className="space-y-6">
         {/* Welcome Section */}
         <div className="text-center">

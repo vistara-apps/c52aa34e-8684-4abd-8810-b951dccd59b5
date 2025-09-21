@@ -1,20 +1,33 @@
 'use client';
 
 import { ReactNode } from 'react';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { Heart, Calendar, BarChart3, Settings } from 'lucide-react';
 
 interface AppShellProps {
   children: ReactNode;
-  currentPage?: 'home' | 'calendar' | 'insights' | 'settings';
 }
 
-export function AppShell({ children, currentPage = 'home' }: AppShellProps) {
+export function AppShell({ children }: AppShellProps) {
+  const pathname = usePathname();
+
   const navItems = [
-    { id: 'home', icon: Heart, label: 'Home' },
-    { id: 'calendar', icon: Calendar, label: 'Calendar' },
-    { id: 'insights', icon: BarChart3, label: 'Insights' },
-    { id: 'settings', icon: Settings, label: 'Settings' },
+    { id: 'home', href: '/', icon: Heart, label: 'Home' },
+    { id: 'calendar', href: '/calendar', icon: Calendar, label: 'Calendar' },
+    { id: 'insights', href: '/insights', icon: BarChart3, label: 'Insights' },
+    { id: 'settings', href: '/settings', icon: Settings, label: 'Settings' },
   ];
+
+  const getCurrentPage = () => {
+    if (pathname === '/') return 'home';
+    if (pathname === '/calendar') return 'calendar';
+    if (pathname === '/insights') return 'insights';
+    if (pathname === '/settings') return 'settings';
+    return 'home';
+  };
+
+  const currentPage = getCurrentPage();
 
   return (
     <div className="min-h-screen bg-background">
@@ -38,10 +51,11 @@ export function AppShell({ children, currentPage = 'home' }: AppShellProps) {
             {navItems.map((item) => {
               const Icon = item.icon;
               const isActive = currentPage === item.id;
-              
+
               return (
-                <button
+                <Link
                   key={item.id}
+                  href={item.href}
                   className={`flex flex-col items-center py-2 px-3 rounded-md transition-colors duration-200 ${
                     isActive
                       ? 'text-primary bg-primary/10'
@@ -50,7 +64,7 @@ export function AppShell({ children, currentPage = 'home' }: AppShellProps) {
                 >
                   <Icon size={20} />
                   <span className="text-xs mt-1">{item.label}</span>
-                </button>
+                </Link>
               );
             })}
           </div>
