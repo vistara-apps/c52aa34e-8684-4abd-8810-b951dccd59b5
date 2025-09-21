@@ -3,7 +3,8 @@
 import { useState, useEffect } from 'react';
 import { User, Bell, Download, Trash2, Shield } from 'lucide-react';
 import { AppShell } from '@/components/AppShell';
-import { getUser, createUser, saveUser, clearAllData } from '@/lib/storage';
+import { getUser, createUser, saveUser, clearAllData, getCycleLogs, getSymptomLogs } from '@/lib/storage';
+import { exportHealthData } from '@/lib/utils';
 import { User as UserType } from '@/lib/types';
 
 export default function SettingsPage() {
@@ -43,7 +44,7 @@ export default function SettingsPage() {
 
   if (!user) {
     return (
-      <AppShell currentPage="settings">
+      <AppShell>
         <div className="flex items-center justify-center py-12">
           <div className="text-center">
             <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary mx-auto mb-4"></div>
@@ -55,7 +56,7 @@ export default function SettingsPage() {
   }
 
   return (
-    <AppShell currentPage="settings">
+    <AppShell>
       <div className="space-y-6">
         <div>
           <h1 className="text-2xl font-bold mb-2">Settings</h1>
@@ -172,7 +173,22 @@ export default function SettingsPage() {
             </p>
             
             <div className="flex gap-3">
-              <button className="btn-secondary flex items-center gap-2">
+              <button
+                onClick={() => {
+                  const csvData = exportHealthData(getCycleLogs(), getSymptomLogs());
+                  const blob = new Blob([csvData], { type: 'text/csv' });
+                  const url = window.URL.createObjectURL(blob);
+                  const a = document.createElement('a');
+                  a.href = url;
+                  a.download = `cyclezen-data-${new Date().toISOString().split('T')[0]}.csv`;
+                  document.body.appendChild(a);
+                  a.click();
+                  document.body.removeChild(a);
+                  window.URL.revokeObjectURL(url);
+                }}
+                className="btn-secondary flex items-center gap-2"
+                disabled={getCycleLogs().length === 0 && getSymptomLogs().length === 0}
+              >
                 <Download size={16} />
                 Export Data
               </button>

@@ -5,7 +5,7 @@ import { HealthInsights } from '@/components/HealthInsights';
 
 export default function InsightsPage() {
   return (
-    <AppShell currentPage="insights">
+    <AppShell>
       <HealthInsights />
     </AppShell>
   );

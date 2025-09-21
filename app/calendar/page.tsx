@@ -31,7 +31,7 @@ export default function CalendarPage() {
 
   if (showCycleForm) {
     return (
-      <AppShell currentPage="calendar">
+      <AppShell>
         <CycleLogForm
           onSave={handleCycleSaved}
           onCancel={() => {
@@ -46,7 +46,7 @@ export default function CalendarPage() {
 
   if (showSymptomForm) {
     return (
-      <AppShell currentPage="calendar">
+      <AppShell>
         <SymptomLogForm
           onSave={handleSymptomSaved}
           onCancel={() => {
@@ -60,7 +60,7 @@ export default function CalendarPage() {
   }
 
   return (
-    <AppShell currentPage="calendar">
+    <AppShell>
       <div className="space-y-6">
         <div>
           <h1 className="text-2xl font-bold mb-2">Calendar</h1>
